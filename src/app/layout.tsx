@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     "HAZOP",
     "consultoria industrial",
     "process safety",
+    "risk management",
+    "industrial safety consulting",
   ],
   openGraph: {
     title: "IN Process Safety",

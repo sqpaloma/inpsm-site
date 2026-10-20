@@ -1,93 +1,83 @@
-const themes = [
-  {
-    title: "Fundamentos de Segurança de Processos",
-    text: "Conceitos essenciais de PSM, elementos do RBPS/CCPS e cultura de segurança de processos.",
-  },
-  {
-    title: "Gestão de Mudanças (MOC)",
-    text: "Metodologia e prática para gerenciamento de mudanças em instalações industriais.",
-  },
-  {
-    title: "Análise de Riscos de Processos (PHA)",
-    text: "Técnicas de HAZOP, HAZID, What-If, APP/APR, LOPA e Bowtie.",
-  },
-  {
-    title: "Investigação de Incidentes",
-    text: "Métodos de investigação de causas raiz e lições aprendidas em segurança de processos.",
-  },
-  {
-    title: "Integridade Mecânica",
-    text: "Gestão da integridade de equipamentos críticos e sistemas de proteção.",
-  },
-  {
-    title: "Procedimentos Operacionais",
-    text: "Elaboração, revisão e gestão de procedimentos operacionais seguros.",
-  },
-  {
-    title: "Cultura e Liderança em Segurança",
-    text: "Desenvolvimento de liderança e fortalecimento da cultura de segurança de processos.",
-  },
-  {
-    title: "Prontidão para Emergências",
-    text: "Planejamento e resposta a emergências em instalações de processos.",
-  },
-];
+"use client";
 
-const modalities = [
-  {
-    title: "In Company",
-    text: "Treinamentos realizados nas instalações do cliente, com conteúdo customizado à realidade operacional da empresa.",
-  },
-  {
-    title: "Turmas Abertas",
-    text: "Cursos com calendário programado, reunindo profissionais de diferentes empresas e setores para troca de experiências.",
-  },
-  {
-    title: "Sob Demanda",
-    text: "Programas desenvolvidos sob medida, com foco em necessidades específicas, projetos ou equipes.",
-  },
-];
+import { useI18n } from "@/lib/i18n";
+
+const areaKeys = ["a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8"];
+const modalityKeys = ["m1", "m2", "m3"];
 
 export default function Training() {
-  return (
-    <section id="treinamentos" className="bg-mist py-20">
-      <div className="mx-auto max-w-[1160px] px-4">
-        <div className="section-tag mb-4">Treinamentos</div>
-        <h2 className="max-w-[600px] font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight text-inst">
-          Capacitação técnica em segurança de processos
-        </h2>
+  const { t } = useI18n();
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_320px]">
-          {/* Themes grid */}
-          <div className="grid gap-4 sm:grid-cols-2">
-            {themes.map((t) => (
+  return (
+    <section className="sec-dark py-22 px-4" id="treinamentos">
+      <div className="max-w-[1120px] mx-auto">
+        <p className="sec-label">{t("train.label")}</p>
+        <h2 className="sec-title">{t("train.title")}</h2>
+        <p className="sec-intro">{t("train.intro")}</p>
+
+        <div className="grid grid-cols-1 md:grid-cols-[1.1fr_0.9fr] gap-14 mt-12 items-start">
+          {/* Training areas */}
+          <div className="flex flex-col">
+            {areaKeys.map((key, i) => (
               <div
-                key={t.title}
-                className="relative rounded-md border border-[var(--card-border)] bg-[var(--card-bg)] px-5 py-5"
+                key={key}
+                className="flex items-baseline gap-3 py-3"
+                style={{
+                  borderBottom:
+                    i < areaKeys.length - 1
+                      ? "1px solid var(--line-inv)"
+                      : "none",
+                }}
               >
-                <span className="green-dot" />
-                <h3 className="mb-1.5 font-display text-[0.95rem] font-semibold text-inst">
-                  {t.title}
-                </h3>
-                <p className="text-[0.8rem] leading-relaxed text-[var(--fg-muted)]">{t.text}</p>
+                <span
+                  className="flex-shrink-0 mt-2"
+                  style={{
+                    width: 8,
+                    height: 2,
+                    background: "var(--green)",
+                  }}
+                />
+                <span className="text-sm" style={{ color: "var(--text-inv)" }}>
+                  {t(`train.${key}`)}
+                </span>
               </div>
             ))}
           </div>
 
-          {/* Modalities sidebar */}
-          <aside className="flex flex-col gap-4">
-            <h3 className="font-display text-xs font-semibold uppercase tracking-wider text-blue">
-              Modalidades
+          {/* Modalities */}
+          <div>
+            <h3
+              className="text-base font-semibold text-white mb-5"
+              style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}
+            >
+              {t("train.modes")}
             </h3>
-            {modalities.map((m) => (
-              <div key={m.title} className="border-l-2 border-green py-3 pl-5">
-                <h4 className="font-display text-[0.9rem] font-semibold text-inst">{m.title}</h4>
-                <p className="mt-1 text-[0.8rem] leading-relaxed text-[var(--fg-muted)]">
-                  {m.text}
+            {modalityKeys.map((key, i) => (
+              <div
+                key={key}
+                className="py-4"
+                style={{
+                  borderBottom:
+                    i < modalityKeys.length - 1
+                      ? "1px solid var(--line-inv)"
+                      : "none",
+                }}
+              >
+                <h4
+                  className="text-sm font-semibold text-white mb-0.5"
+                  style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}
+                >
+                  {t(`train.${key}`)}
+                </h4>
+                <p
+                  className="text-xs"
+                  style={{ color: "var(--text-inv-muted)", lineHeight: 1.55 }}
+                >
+                  {t(`train.${key}t`)}
                 </p>
               </div>
             ))}
-          </aside>
+          </div>
         </div>
       </div>
     </section>

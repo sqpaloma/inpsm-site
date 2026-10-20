@@ -2,94 +2,157 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { Menu, X } from "lucide-react";
-
-const navItems = [
-  { href: "#sobre", label: "Sobre" },
-  { href: "#solucoes", label: "Soluções" },
-  { href: "#treinamentos", label: "Treinamentos" },
-  { href: "#setores", label: "Setores" },
-];
+import { useI18n } from "@/lib/i18n";
 
 export default function Header() {
+  const { lang, t, setLang } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 24);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const navLinks = [
+    { href: "#sobre", key: "nav.about" },
+    { href: "#solucoes", key: "nav.solutions" },
+    { href: "#treinamentos", key: "nav.training" },
+    { href: "#setores", key: "nav.industries" },
+  ];
+
   return (
     <>
       <header
-        className={`sticky top-0 z-50 bg-navy transition-shadow ${
-          scrolled ? "shadow-lg shadow-black/25" : ""
+        id="topo"
+        className={`sticky top-0 z-50 transition-shadow duration-300 ${
+          scrolled ? "shadow-[0_1px_24px_rgba(0,0,0,0.35)]" : ""
         }`}
+        style={{ background: "var(--navy)" }}
       >
-        <div className="mx-auto flex max-w-[1160px] items-center justify-between px-4 py-3.5">
-          <Link href="#top" className="flex items-center">
-            <Image src="/logo.svg" alt="IN Process Safety" width={140} height={42} priority />
-          </Link>
+        <div className="flex items-center justify-between max-w-[1120px] mx-auto px-4 py-3.5">
+          <a href="#topo">
+            <Image src="/logo.svg" alt="IN Process Safety" width={120} height={38} style={{ height: 38, width: "auto" }} priority />
+          </a>
 
-          <nav className="hidden items-center gap-8 md:flex">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="font-display text-sm font-medium text-white/75 transition-colors hover:text-white"
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.key}
+                href={link.href}
+                className="text-white/55 hover:text-white transition-colors text-sm font-medium tracking-[0.01em]"
+                style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}
               >
-                {item.label}
-              </Link>
+                {t(link.key)}
+              </a>
             ))}
-            <Link
+
+            {/* Language toggle */}
+            <div className="flex items-center rounded overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
+              <button
+                className={`lang-btn ${lang === "pt" ? "active" : ""}`}
+                onClick={() => setLang("pt")}
+              >
+                PT
+              </button>
+              <button
+                className={`lang-btn ${lang === "en" ? "active" : ""}`}
+                onClick={() => setLang("en")}
+              >
+                EN
+              </button>
+            </div>
+
+            <a
               href="#contato"
-              className="rounded-sm bg-green px-5 py-2 font-display text-sm font-semibold text-white transition-colors hover:bg-green-dim"
+              className="text-white text-sm font-semibold px-4 py-2 rounded-[5px] transition-colors hover:brightness-90"
+              style={{
+                background: "var(--green)",
+                fontFamily: "var(--font-outfit), system-ui, sans-serif",
+              }}
             >
-              Fale Conosco
-            </Link>
+              {t("nav.cta")}
+            </a>
           </nav>
 
+          {/* Burger */}
           <button
-            className="p-1.5 md:hidden"
+            className="md:hidden p-1.5 bg-transparent border-none cursor-pointer"
             aria-label="Menu"
             onClick={() => setMobileOpen(true)}
           >
-            <Menu className="h-6 w-6 text-white" />
+            <span className="block w-[22px] h-0.5 bg-white rounded-sm mb-[5px]" />
+            <span className="block w-[22px] h-0.5 bg-white rounded-sm mb-[5px]" />
+            <span className="block w-[22px] h-0.5 bg-white rounded-sm" />
           </button>
         </div>
       </header>
 
       {/* Mobile nav overlay */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-8 bg-navy">
+        <nav
+          className="fixed inset-0 z-[200] flex flex-col items-center justify-center gap-8"
+          style={{ background: "var(--navy)" }}
+          aria-label="Menu mobile"
+        >
           <button
-            className="absolute right-5 top-5 text-white"
+            className="absolute top-4 right-5 bg-transparent border-none text-white text-3xl cursor-pointer leading-none"
             onClick={() => setMobileOpen(false)}
             aria-label="Fechar"
           >
-            <X className="h-7 w-7" />
+            &times;
           </button>
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="font-display text-xl font-medium text-white/85 hover:text-white"
+
+          {navLinks.map((link) => (
+            <a
+              key={link.key}
+              href={link.href}
+              className="text-white/80 text-xl font-medium"
+              style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}
               onClick={() => setMobileOpen(false)}
             >
-              {item.label}
-            </Link>
+              {t(link.key)}
+            </a>
           ))}
-          <Link
+
+          <div className="flex rounded overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
+            <button
+              className={`lang-btn text-sm px-3 py-1.5 ${lang === "pt" ? "active" : ""}`}
+              onClick={() => setLang("pt")}
+            >
+              PT
+            </button>
+            <button
+              className={`lang-btn text-sm px-3 py-1.5 ${lang === "en" ? "active" : ""}`}
+              onClick={() => setLang("en")}
+            >
+              EN
+            </button>
+          </div>
+
+          <a
             href="#contato"
-            className="rounded-sm bg-green px-6 py-3 font-display text-base font-semibold text-white hover:bg-green-dim"
+            className="text-white text-sm font-semibold px-5 py-2.5 rounded-[5px] mt-2 transition-colors hover:brightness-90"
+            style={{
+              background: "var(--green)",
+              fontFamily: "var(--font-outfit), system-ui, sans-serif",
+            }}
             onClick={() => setMobileOpen(false)}
           >
-            Fale Conosco
-          </Link>
-        </div>
+            {t("nav.cta")}
+          </a>
+        </nav>
       )}
     </>
   );

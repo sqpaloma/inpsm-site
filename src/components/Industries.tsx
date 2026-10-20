@@ -1,38 +1,29 @@
-const industries = [
-  "Química",
-  "Petroquímica",
-  "Óleo e Gás",
-  "Biocombustíveis",
-  "Papel e Celulose",
-  "Armazenamento",
-  "Terminais Portuários",
-  "Agroindústria",
-  "Mineração",
-  "Alimentos",
-  "Farmacêutica",
-  "Energia",
+"use client";
+
+import { useI18n } from "@/lib/i18n";
+
+const chipKeys = [
+  "ind.c1", "ind.c2", "ind.c3", "ind.c4", "ind.c5", "ind.c6",
+  "ind.c7", "ind.c8", "ind.c9", "ind.c10", "ind.c11", "ind.c12",
 ];
 
 export default function Industries() {
-  return (
-    <section id="setores" className="py-20">
-      <div className="mx-auto max-w-[1160px] px-4">
-        <div className="section-tag mb-4">Setores</div>
-        <h2 className="max-w-[600px] font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight text-inst">
-          Setores de atuação
-        </h2>
-        <p className="mt-3 max-w-[480px] text-[var(--fg-muted)]">
-          Atendemos indústrias com processos que envolvem substâncias perigosas, reações
-          químicas, altas pressões ou temperaturas elevadas.
-        </p>
+  const { t } = useI18n();
 
-        <div className="mt-10 flex flex-wrap gap-3">
-          {industries.map((ind) => (
+  return (
+    <section className="py-22 px-4" id="setores">
+      <div className="max-w-[1120px] mx-auto">
+        <p className="sec-label">{t("ind.label")}</p>
+        <h2 className="sec-title">{t("ind.title")}</h2>
+        <p className="sec-intro">{t("ind.intro")}</p>
+
+        <div className="flex flex-wrap gap-2.5 mt-12">
+          {chipKeys.map((key) => (
             <span
-              key={ind}
-              className="rounded-full border border-[var(--card-border)] bg-[var(--card-bg)] px-5 py-2.5 font-display text-[0.85rem] font-medium text-inst transition-colors hover:border-green hover:text-green"
+              key={key}
+              className="font-[family-name:var(--font-outfit)] text-sm font-medium text-[var(--text-mid)] px-5 py-2.5 border border-[var(--line)] rounded-md transition-colors hover:border-[var(--blue)] hover:text-[var(--blue)] cursor-default"
             >
-              {ind}
+              {t(key)}
             </span>
           ))}
         </div>

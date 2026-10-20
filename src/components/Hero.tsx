@@ -1,52 +1,78 @@
-import Link from "next/link";
+"use client";
+
+import { useI18n } from "@/lib/i18n";
 
 export default function Hero() {
+  const { t } = useI18n();
+
   return (
-    <section className="relative flex min-h-[540px] items-center overflow-hidden bg-navy">
-      {/* Background image */}
+    <section className="relative flex items-end overflow-hidden" style={{ background: "var(--navy)" }}>
+      {/* Background image with gradient overlay */}
       <div
-        className="absolute inset-0 bg-cover bg-[center_40%]"
-        style={{ backgroundImage: "url('/hero.png')" }}
+        className="absolute inset-0 bg-cover"
+        style={{ backgroundImage: "url('/hero.png')", backgroundPosition: "center 38%" }}
       >
-        <div className="absolute inset-0 bg-navy/[0.82]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              linear-gradient(180deg, rgba(7,31,64,0.12) 0%, rgba(7,31,64,0.94) 82%),
+              linear-gradient(90deg, rgba(7,31,64,0.82) 0%, rgba(7,31,64,0.08) 72%)
+            `,
+          }}
+        />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto w-full max-w-[1160px] px-4 py-20 pb-[4.5rem]">
-        {/* Green marker */}
-        <div className="mb-6 h-2.5 w-2.5 rounded-[2px] bg-green" />
+      <div className="relative z-10 w-full max-w-[1120px] mx-auto px-4 pt-44 pb-[4.5rem]">
+        {/* Green accent line */}
+        <div className="w-12 h-0.5 mb-7" style={{ background: "var(--green)" }} />
 
-        <h1 className="max-w-[680px] font-display text-[clamp(2rem,5vw,3.25rem)] font-bold leading-[1.15] tracking-tight text-white">
-          <span className="block">Segurança de Processos</span>
-          <span className="block">em nosso DNA.</span>
+        <h1
+          className="max-w-[680px] font-light text-white leading-[1.08] tracking-[-0.03em] animate-[heroIn_0.9s_cubic-bezier(0.22,1,0.36,1)_both]"
+          style={{
+            fontSize: "clamp(2.4rem, 5.5vw, 3.75rem)",
+            fontFamily: "var(--font-outfit), system-ui, sans-serif",
+          }}
+        >
+          {t("hero.title.1")}
+          <br />
+          {t("hero.title.2")}
         </h1>
 
-        <p className="mt-4 max-w-[560px] text-[clamp(1rem,2.5vw,1.25rem)] font-light leading-relaxed text-white/80">
-          Integrada à gestão de riscos do seu negócio.
+        <p
+          className="max-w-[440px] text-white/60 font-light mt-5 leading-[1.65]"
+          style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.12rem)" }}
+        >
+          {t("hero.sub")}
         </p>
 
-        {/* Slogan */}
-        <div className="mt-8 inline-flex items-center gap-3 font-display text-[0.85rem] font-medium uppercase tracking-[0.12em] text-white/55">
-          <span>Optimized process</span>
-          <span className="h-3.5 w-px bg-white/25" />
-          <span className="text-green">Safe Operations</span>
+        <div className="flex gap-3.5 mt-10 flex-wrap">
+          <a
+            href="#contato"
+            className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-[5px] transition-colors hover:brightness-90"
+            style={{
+              background: "var(--green)",
+              fontFamily: "var(--font-outfit), system-ui, sans-serif",
+            }}
+          >
+            {t("hero.cta1")}
+          </a>
+          <a
+            href="#solucoes"
+            className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-3 rounded-[5px] border border-white/[0.22] transition-colors hover:border-white/45 bg-transparent"
+            style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}
+          >
+            {t("hero.cta2")}
+          </a>
         </div>
 
-        {/* CTAs */}
-        <div className="mt-10 flex flex-wrap gap-4">
-          <Link
-            href="#contato"
-            className="inline-flex items-center gap-2 rounded-sm bg-green px-7 py-3 font-display text-[0.9rem] font-semibold text-white transition-colors hover:bg-green-dim"
-          >
-            Fale com um especialista
-          </Link>
-          <Link
-            href="#solucoes"
-            className="inline-flex items-center gap-2 rounded-sm border border-white/30 px-7 py-3 font-display text-[0.9rem] font-semibold text-white transition-colors hover:border-white/60"
-          >
-            Conheça nossas soluções
-          </Link>
-        </div>
+        <p
+          className="mt-14 text-white/[0.22] text-[0.68rem] font-medium uppercase tracking-[0.14em]"
+          style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}
+        >
+          Optimized Process &middot; Safe Operations
+        </p>
       </div>
     </section>
   );

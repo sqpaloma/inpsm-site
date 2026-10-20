@@ -1,60 +1,71 @@
+"use client";
+
+import { useI18n } from "@/lib/i18n";
+
 const services = [
-  {
-    tag: "PSM",
-    title: "Sistemas de Gestão PSM",
-    text: "Desenvolvimento, implementação e melhoria contínua de sistemas de gestão de segurança de processos, alinhados às melhores práticas e normas internacionais (OSHA PSM, RBPS/CCPS, Seveso III).",
-  },
-  {
-    tag: "Riscos",
-    title: "Estudos de Análise de Riscos",
-    text: "Condução de estudos qualitativos e quantitativos: HAZOP, HAZID, LOPA, Bowtie, APP/APR, What-If e análises de consequências, com equipe experiente e multidisciplinar.",
-  },
-  {
-    tag: "Projetos",
-    title: "Segurança de Processos em Projetos",
-    text: "Integração da segurança de processos em todas as fases do ciclo de vida de projetos industriais — do conceitual ao comissionamento — garantindo conformidade e redução de riscos desde a origem.",
-  },
-  {
-    tag: "Auditoria",
-    title: "Auditorias e Investigação",
-    text: "Auditorias de conformidade em segurança de processos e investigação técnica de incidentes e quase-acidentes, com foco em causas raiz e ações preventivas eficazes.",
-  },
-  {
-    tag: "Treinamento",
-    title: "Treinamentos Especializados",
-    text: "Programas de capacitação técnica em segurança de processos, com metodologia aplicada, estudos de caso reais e conteúdo alinhado às principais referências internacionais.",
-  },
-  {
-    tag: "Excelência",
-    title: "Excelência Operacional",
-    text: "Consultoria para fortalecimento da cultura de segurança, melhoria de procedimentos operacionais, gestão de mudanças (MOC) e integridade mecânica.",
-  },
+  { key: "s1", tags: ["PSM", "RBPS", "OSHA", "Seveso III", "ISO 45001"] },
+  { key: "s2", tags: ["HAZOP", "HAZID", "LOPA", "Bowtie", "What-If", "APP"] },
+  { key: "s3", tags: ["Tripod Beta", "Árvore de Causas", "5 Porquês", "AcciMap"] },
+  { key: "s4", tags: ["Gap Analysis", "Compliance", "Benchmarking"] },
+  { key: "s5", tags: ["RBI", "FMEA", "SIL/SIS", "NR-13"] },
+  { key: "s6", tags: ["MOC", "PSSR", "Startup/Shutdown"] },
 ];
 
 export default function Services() {
-  return (
-    <section id="solucoes" className="py-20">
-      <div className="mx-auto max-w-[1160px] px-4">
-        <div className="section-tag mb-4">Soluções</div>
-        <h2 className="max-w-[600px] font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight text-inst">
-          Áreas de atuação
-        </h2>
+  const { t } = useI18n();
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
+  return (
+    <section className="py-22 px-4" id="solucoes">
+      <div className="max-w-[1120px] mx-auto">
+        <p className="sec-label">{t("svc.label")}</p>
+        <h2 className="sec-title">{t("svc.title")}</h2>
+        <p className="sec-intro">{t("svc.intro")}</p>
+
+        <div className="mt-14">
+          {services.map((svc, i) => (
             <div
-              key={s.tag}
-              className="relative flex flex-col rounded-md border border-[var(--card-border)] bg-[var(--card-bg)] px-6 pb-7 pt-8"
+              key={svc.key}
+              className="grid grid-cols-1 md:grid-cols-[0.38fr_0.62fr] gap-3 md:gap-8 py-8 items-start"
+              style={{
+                borderTop: "1px solid var(--line)",
+                ...(i === services.length - 1
+                  ? { borderBottom: "1px solid var(--line)" }
+                  : {}),
+              }}
             >
-              <span className="green-dot" />
-              <span className="blue-line" />
-              <div className="mb-3 inline-flex self-start rounded-full border border-blue/20 bg-blue/5 px-3 py-0.5 font-display text-[0.7rem] font-semibold uppercase tracking-wider text-blue">
-                {s.tag}
-              </div>
-              <h3 className="mb-2 font-display text-[1.05rem] font-semibold text-inst">
-                {s.title}
+              <h3
+                className="text-lg font-semibold leading-snug"
+                style={{
+                  fontFamily: "var(--font-outfit), system-ui, sans-serif",
+                  color: "var(--text)",
+                }}
+              >
+                {t(`svc.${svc.key}`)}
               </h3>
-              <p className="text-[0.85rem] leading-relaxed text-[var(--fg-muted)]">{s.text}</p>
+              <div>
+                <p
+                  className="text-sm"
+                  style={{ color: "var(--text-muted)", lineHeight: 1.72 }}
+                >
+                  {t(`svc.${svc.key}t`)}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-3">
+                  {svc.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[0.67rem] font-medium px-2 py-0.5 rounded-sm"
+                      style={{
+                        fontFamily: "var(--font-outfit), system-ui, sans-serif",
+                        color: "var(--blue)",
+                        border: "1px solid var(--line)",
+                        letterSpacing: "0.01em",
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           ))}
         </div>

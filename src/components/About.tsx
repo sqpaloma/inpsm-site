@@ -1,45 +1,76 @@
+"use client";
+
+import { useI18n } from "@/lib/i18n";
+
 const stats = [
-  { num: "12+", label: "Setores atendidos" },
-  { num: "6", label: "Áreas de atuação" },
-  { num: "8", label: "Eixos temáticos de treinamento" },
-  { num: "3", label: "Modalidades de capacitação" },
+  { num: "12+", key: "about.stat1" },
+  { num: "6", key: "about.stat2" },
+  { num: "8", key: "about.stat3" },
+  { num: "3", key: "about.stat4" },
 ];
 
-export default function About() {
+function RichText({ text }: { text: string }) {
+  const parts = text.split(/\*\*(.*?)\*\*/g);
   return (
-    <section id="sobre" className="py-20">
-      <div className="mx-auto max-w-[1160px] px-4">
-        <div className="section-tag mb-4">Quem Somos</div>
-        <h2 className="max-w-[600px] font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight text-inst">
-          Consultoria especializada em segurança de processos
-        </h2>
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1 ? (
+          <strong key={i} className="font-semibold" style={{ color: "var(--text)" }}>
+            {part}
+          </strong>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
 
-        <div className="mt-12 grid items-start gap-12 md:grid-cols-2">
-          <div className="max-w-[520px] space-y-4 text-[var(--fg-muted)] leading-relaxed">
+export default function About() {
+  const { t } = useI18n();
+
+  return (
+    <section className="py-22 px-4" id="sobre">
+      <div className="max-w-[1120px] mx-auto">
+        <p className="sec-label">{t("about.label")}</p>
+        <h2 className="sec-title">{t("about.title")}</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 mt-12 items-start">
+          {/* Text column */}
+          <div className="space-y-4" style={{ color: "var(--text-mid)", lineHeight: 1.78 }}>
             <p>
-              A <strong className="font-semibold text-inst">IN Process Safety</strong> é uma
-              consultoria especializada em segurança de processos e gestão de riscos industriais.
-              Atuamos com foco na implementação e melhoria de sistemas de gestão de segurança de
-              processos (PSM), estudos de análise de riscos, auditorias, treinamentos e no
-              fortalecimento da cultura de segurança em ambientes industriais.
+              <RichText text={t("about.p1")} />
             </p>
             <p>
-              Com experiência consolidada em diversos setores, combinamos rigor técnico, visão
-              estratégica e compromisso com a excelência para promover operações mais seguras,
-              confiáveis e eficientes.
+              <RichText text={t("about.p2")} />
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-5">
+          {/* Stats grid */}
+          <div className="grid grid-cols-2 gap-10">
             {stats.map((s) => (
               <div
-                key={s.label}
-                className="relative rounded-md border border-[var(--card-border)] bg-[var(--card-bg)] p-6"
+                key={s.key}
+                className="pt-4"
+                style={{ borderTop: "1px solid var(--line)" }}
               >
-                <span className="green-dot" />
-                <span className="blue-line" />
-                <div className="font-display text-3xl font-bold text-inst">{s.num}</div>
-                <div className="mt-1 text-xs font-medium text-[var(--fg-muted)]">{s.label}</div>
+                <div
+                  className="font-semibold leading-none dark:!text-[--green]"
+                  style={{
+                    fontFamily: "var(--font-outfit), system-ui, sans-serif",
+                    fontSize: "2.75rem",
+                    color: "var(--navy)",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {s.num}
+                </div>
+                <div
+                  className="text-sm mt-1 leading-snug"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  {t(s.key)}
+                </div>
               </div>
             ))}
           </div>

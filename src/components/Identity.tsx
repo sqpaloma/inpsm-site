@@ -1,77 +1,70 @@
-const pillars = [
-  {
-    title: "Missão",
-    text: "Prover soluções integradas e especializadas em segurança de processos e gestão de riscos, promovendo operações mais seguras, confiáveis e eficientes para a indústria.",
-  },
-  {
-    title: "Visão",
-    text: "Ser referência em consultoria de segurança de processos no Brasil e na América Latina, reconhecida pela excelência técnica, inovação e compromisso com a segurança operacional.",
-  },
-  {
-    title: "Propósito",
-    text: "Proteger vidas, processos e o meio ambiente por meio de uma engenharia de segurança responsável e eficaz.",
-  },
+"use client";
+
+import { useI18n } from "@/lib/i18n";
+
+const mvpKeys = [
+  { titleKey: "id.mission", textKey: "id.mission_t" },
+  { titleKey: "id.vision", textKey: "id.vision_t" },
+  { titleKey: "id.purpose", textKey: "id.purpose_t" },
 ];
 
-const values = [
-  {
-    num: "01",
-    title: "Excelência Técnica",
-    text: "Compromisso com o mais alto padrão de qualidade e rigor em cada entrega.",
-  },
-  {
-    num: "02",
-    title: "Integridade",
-    text: "Atuação ética, transparente e responsável em todas as relações.",
-  },
-  {
-    num: "03",
-    title: "Segurança como Prioridade",
-    text: "Toda decisão é orientada pela preservação da vida e do meio ambiente.",
-  },
-  {
-    num: "04",
-    title: "Inovação com Propósito",
-    text: "Busca contínua por soluções eficientes, atualizadas e de alto impacto.",
-  },
+const valueKeys = [
+  { titleKey: "id.v1", textKey: "id.v1t" },
+  { titleKey: "id.v2", textKey: "id.v2t" },
+  { titleKey: "id.v3", textKey: "id.v3t" },
+  { titleKey: "id.v4", textKey: "id.v4t" },
 ];
 
 export default function Identity() {
+  const { t } = useI18n();
+
   return (
-    <section className="bg-mist py-20">
-      <div className="mx-auto max-w-[1160px] px-4">
-        <div className="section-tag mb-4">Identidade</div>
-        <h2 className="max-w-[600px] font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold tracking-tight text-inst">
-          O que nos move
-        </h2>
+    <section className="sec-dark py-22 px-4" id="identidade">
+      <div className="max-w-[1120px] mx-auto">
+        <p className="sec-label">{t("id.label")}</p>
+        <h2 className="sec-title">{t("id.title")}</h2>
 
         {/* Mission / Vision / Purpose */}
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {pillars.map((p) => (
-            <div
-              key={p.title}
-              className="relative rounded-md border border-[var(--card-border)] bg-[var(--card-bg)] px-6 py-8"
-            >
-              <span className="green-dot" />
-              <h3 className="mb-3 font-display text-lg font-semibold text-inst">{p.title}</h3>
-              <p className="text-sm leading-relaxed text-[var(--fg-muted)]">{p.text}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-14">
+          {mvpKeys.map((m) => (
+            <div key={m.titleKey}>
+              <h3 className="text-base font-semibold text-white mb-3" style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}>
+                {t(m.titleKey)}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-inv-mid)", lineHeight: 1.72 }}>
+                {t(m.textKey)}
+              </p>
             </div>
           ))}
         </div>
 
         {/* Values */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {values.map((v) => (
-            <div key={v.num} className="border-l-2 border-green py-4 pl-5">
-              <div className="font-display text-4xl font-bold text-navy/10">{v.num}</div>
-              <h4 className="mt-2 font-display text-[0.95rem] font-semibold text-inst">
-                {v.title}
-              </h4>
-              <p className="mt-2 text-[0.85rem] leading-relaxed text-[var(--fg-muted)]">
-                {v.text}
-              </p>
-            </div>
-          ))}
+        <div className="mt-16 pt-12" style={{ borderTop: "1px solid var(--line-inv)" }}>
+          <h3 className="text-base font-semibold text-white mb-8" style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}>
+            {t("id.vals")}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {valueKeys.map((v) => (
+              <div key={v.titleKey}>
+                <h4
+                  className="text-sm font-semibold text-white mb-1 flex items-center gap-2"
+                  style={{ fontFamily: "var(--font-outfit), system-ui, sans-serif" }}
+                >
+                  <span
+                    className="flex-shrink-0"
+                    style={{ width: 8, height: 2, background: "var(--green)" }}
+                  />
+                  {t(v.titleKey)}
+                </h4>
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "var(--text-inv-muted)", paddingLeft: "calc(8px + 0.5rem)" }}
+                >
+                  {t(v.textKey)}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
