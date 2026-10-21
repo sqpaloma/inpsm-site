@@ -505,7 +505,7 @@ button { font: inherit; }
   margin-bottom: 0.5rem;
 }
 .val-n { font-size: 0.8rem; font-weight: 600; color: var(--green); flex-shrink: 0; min-width: 1.5rem; }
-.val p { font-size: 0.9rem; color: var(--text-inv-mid); line-height: 1.65; padding-left: calc(1.5rem + 0.65rem); }
+.val p { font-size: 0.9rem; color: var(--text-inv-mid); line-height: 1.65; padding-left: calc(1.5rem + 0.65rem); text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 @media (max-width: 960px) {
   .mvp-row { grid-template-columns: 1fr; }
   .vals-row { grid-template-columns: 1fr 1fr; }
