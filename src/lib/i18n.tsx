@@ -1,55 +1,18 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
-import { translations, type Lang } from "./translations";
+import { createContext, useContext, type ReactNode } from "react";
+import type { Content } from "@/content/types";
+import { pt } from "@/content/pt";
+import { en } from "@/content/en";
 
-interface I18nContextValue {
-  lang: Lang;
-  t: (key: string) => string;
-  setLang: (lang: Lang) => void;
+export const dictionaries = { pt, en } as const;
+
+const I18nContext = createContext<Content>(pt);
+
+export function I18nProvider({ lang, children }: { lang: Content["lang"]; children: ReactNode }) {
+  return <I18nContext.Provider value={dictionaries[lang]}>{children}</I18nContext.Provider>;
 }
 
-const I18nContext = createContext<I18nContextValue>({
-  lang: "pt",
-  t: (key) => key,
-  setLang: () => {},
-});
-
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("pt");
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("inps-lang");
-      if (saved === "en" || saved === "pt") {
-        setLangState(saved);
-      }
-    } catch {}
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
-  }, [lang]);
-
-  const setLang = useCallback((newLang: Lang) => {
-    setLangState(newLang);
-    try {
-      localStorage.setItem("inps-lang", newLang);
-    } catch {}
-  }, []);
-
-  const t = useCallback(
-    (key: string) => translations[lang][key] ?? key,
-    [lang]
-  );
-
-  return (
-    <I18nContext.Provider value={{ lang, t, setLang }}>
-      {children}
-    </I18nContext.Provider>
-  );
-}
-
-export function useI18n() {
+export function useContent() {
   return useContext(I18nContext);
 }

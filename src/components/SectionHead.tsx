@@ -8,14 +8,14 @@ export default function SectionHead({
   intro,
 }: {
   label: string;
-  title: string;
+  title?: string;
   intro?: string;
 }) {
   return (
-    <div className="sec-head">
+    <div className={`sec-head${title ? "" : " sec-head-label"}`}>
       <div data-rv>
         <p className="sec-label">{label}</p>
-        <h2 className="sec-title">{title}</h2>
+        {title ? <h2 className="sec-title">{title}</h2> : null}
       </div>
       {intro ? (
         <p className="sec-intro" data-rv style={delay(1, 140)}>

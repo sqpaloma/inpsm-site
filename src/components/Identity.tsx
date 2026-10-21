@@ -1,50 +1,56 @@
 "use client";
 
 import { Compass, Eye, Target } from "lucide-react";
-import { useI18n } from "@/lib/i18n";
+import { useContent } from "@/lib/i18n";
 import { delay } from "@/lib/reveal";
 import SectionHead from "./SectionHead";
 
-const pillars = [
-  { key: "mission", Icon: Target },
-  { key: "vision", Icon: Eye },
-  { key: "purpose", Icon: Compass },
-];
-
-const values = ["v1", "v2", "v3", "v4"];
-
 export default function Identity() {
-  const { t } = useI18n();
+  const c = useContent();
+  const { mission, vision, purpose } = c.identity;
+  const pillars = [
+    { item: mission, Icon: Target },
+    { item: vision, Icon: Eye },
+    { item: purpose, Icon: Compass },
+  ];
 
   return (
     <section className="sec sec-dark" id="identidade">
       <div className="container">
-        <SectionHead label={t("id.label")} title={t("id.title")} />
+        <SectionHead label={c.identity.label} />
 
         <div className="mvp-row">
-          {pillars.map(({ key, Icon }, i) => (
-            <div className="mvp" key={key} data-rv style={delay(i)}>
+          {pillars.map(({ item, Icon }, i) => (
+            <div className="mvp" key={item.title} data-rv style={delay(i)}>
               <div className="mvp-ico">
                 <Icon size={22} strokeWidth={1.75} />
               </div>
-              <h3>{t(`id.${key}`)}</h3>
-              <p>{t(`id.${key}_t`)}</p>
+              <h3>{item.title}</h3>
+              {item.paragraphs.map((p, j) => (
+                <p key={j} className={j === 0 && item.paragraphs.length > 1 ? "mvp-lead" : undefined}>
+                  {p}
+                </p>
+              ))}
             </div>
           ))}
         </div>
 
         <div className="vals-wrap">
           <div className="vals-head" data-rv>
-            <h3>{t("id.vals")}</h3>
+            <h3>{c.identity.valuesTitle}</h3>
+            <p>{c.identity.valuesIntro}</p>
           </div>
-          <div className="vals-row">
-            {values.map((v, i) => (
-              <div className="val" key={v} data-rv style={delay(i)}>
-                <h4>{t(`id.${v}`)}</h4>
-                <p>{t(`id.${v}t`)}</p>
-              </div>
+          <ol className="vals-row">
+            {c.identity.values.map((v, i) => (
+              <li className="val" key={v.title} data-rv style={delay(i)}>
+                <h4>
+                  <span className="val-n">{String(i + 1).padStart(2, "0")}</span>
+                  {v.title}
+                </h4>
+                <p>{v.text}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
     </section>

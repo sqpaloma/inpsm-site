@@ -2,17 +2,17 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useI18n } from "@/lib/i18n";
+import { useContent } from "@/lib/i18n";
 
 export default function Hero() {
-  const { t } = useI18n();
+  const c = useContent();
 
   return (
-    <section className="hero" aria-label="Apresentação">
+    <section className="hero" aria-label={c.a11y.hero}>
       <div className="hero-bg">
         <Image
           src="/hero.jpg"
-          alt="Planta industrial ao entardecer"
+          alt={c.a11y.heroImage}
           fill
           priority
           quality={80}
@@ -24,25 +24,21 @@ export default function Hero() {
       <div className="hero-body">
         <div className="container hero-in">
           <div className="hero-accent" />
-          <h1>
-            {t("hero.title.1")}
-            <br />
-            {t("hero.title.2")}
-          </h1>
-          <p className="hero-sub">{t("hero.sub")}</p>
+          <h1>{c.hero.title}</h1>
+          <p className="hero-sub">{c.hero.sub}</p>
           <div className="hero-btns">
             <a href="#contato" className="btn btn-g">
-              {t("hero.cta1")}
+              {c.hero.ctaPrimary}
               <ArrowRight size={16} strokeWidth={2.2} />
             </a>
             <a href="#solucoes" className="btn btn-o">
-              {t("hero.cta2")}
+              {c.hero.ctaSecondary}
             </a>
           </div>
           <p className="hero-tag">
-            <span>Optimized Process</span>
-            <span className="sep" aria-hidden="true" />
-            <span>Safe Operations</span>
+            <span>{c.hero.slogan[0]}</span>
+            <span className="sep" aria-hidden="true">|</span>
+            <span>{c.hero.slogan[1]}</span>
           </p>
         </div>
       </div>

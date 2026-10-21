@@ -1,54 +1,80 @@
 "use client";
 
-import {
-  Beaker,
-  Droplets,
-  Factory,
-  FlaskConical,
-  Fuel,
-  Layers,
-  Pickaxe,
-  Pill,
-  Sprout,
-  TreePine,
-  Utensils,
-  Zap,
-} from "lucide-react";
-import { useI18n } from "@/lib/i18n";
-import { delay } from "@/lib/reveal";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useContent } from "@/lib/i18n";
 import SectionHead from "./SectionHead";
 
-const industries = [
-  { key: "c1", Icon: Fuel },
-  { key: "c2", Icon: FlaskConical },
-  { key: "c3", Icon: Beaker },
-  { key: "c4", Icon: Pickaxe },
-  { key: "c5", Icon: Factory },
-  { key: "c6", Icon: Zap },
-  { key: "c7", Icon: Sprout },
-  { key: "c8", Icon: TreePine },
-  { key: "c9", Icon: Utensils },
-  { key: "c10", Icon: Pill },
-  { key: "c11", Icon: Layers },
-  { key: "c12", Icon: Droplets },
-];
+const AUTOPLAY_MS = 3500;
 
 export default function Industries() {
-  const { t } = useI18n();
+  const c = useContent();
+  const track = useRef<HTMLUListElement>(null);
+  const [paused, setPaused] = useState(false);
+
+  const step = useCallback((dir: 1 | -1) => {
+    const el = track.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>(".ind-card");
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    const amount = card ? card.offsetWidth + gap : el.clientWidth * 0.8;
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+    const atStart = el.scrollLeft <= 4;
+    if (dir === 1 && atEnd) el.scrollTo({ left: 0, behavior: "smooth" });
+    else if (dir === -1 && atStart) el.scrollTo({ left: el.scrollWidth, behavior: "smooth" });
+    else el.scrollBy({ left: dir * amount, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const el = track.current;
+    if (!el) return;
+    let visible = false;
+    const io = new IntersectionObserver(([entry]) => (visible = entry.isIntersecting));
+    io.observe(el);
+    const id = window.setInterval(() => visible && step(1), AUTOPLAY_MS);
+    return () => {
+      window.clearInterval(id);
+      io.disconnect();
+    };
+  }, [paused, step]);
 
   return (
     <section className="sec sec-alt" id="setores">
       <div className="container">
-        <SectionHead label={t("ind.label")} title={t("ind.title")} intro={t("ind.intro")} />
-
-        <div className="ind-grid">
-          {industries.map(({ key, Icon }, i) => (
-            <div className="ind-chip" key={key} data-rv style={delay(i, 50)}>
-              <Icon size={20} strokeWidth={1.75} />
-              <span>{t(`ind.${key}`)}</span>
-            </div>
-          ))}
+        <div className="ind-head">
+          <SectionHead label={c.industries.label} title={c.industries.title} />
+          <div className="ind-ctrl" data-rv>
+            <button type="button" aria-label={c.a11y.prev} onClick={() => step(-1)}>
+              <ChevronLeft size={20} strokeWidth={2} />
+            </button>
+            <button type="button" aria-label={c.a11y.next} onClick={() => step(1)}>
+              <ChevronRight size={20} strokeWidth={2} />
+            </button>
+          </div>
         </div>
+
+        <ul
+          className="ind-track"
+          ref={track}
+          aria-roledescription="carousel"
+          aria-label={c.industries.title}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+          onTouchStart={() => setPaused(true)}
+          tabIndex={0}
+        >
+          {c.industries.items.map((name, i) => (
+            <li className="ind-card" key={name} aria-roledescription="slide">
+              <span className="ind-n">{String(i + 1).padStart(2, "0")}</span>
+              <span className="ind-name">{name}</span>
+              <span className="ind-line" aria-hidden="true" />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
