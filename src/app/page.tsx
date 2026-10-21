@@ -1,6 +1,7 @@
 "use client";
 
 import { I18nProvider } from "@/lib/i18n";
+import { RevealRoot } from "@/lib/reveal";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -14,17 +15,19 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <I18nProvider>
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Identity />
-        <Services />
-        <Training />
-        <Industries />
-        <Contact />
-      </main>
-      <Footer />
+      <RevealRoot>
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Identity />
+          <Services />
+          <Training />
+          <Industries />
+          <Contact />
+        </main>
+        <Footer />
+      </RevealRoot>
     </I18nProvider>
   );
 }

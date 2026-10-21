@@ -1,30 +1,52 @@
 "use client";
 
+import {
+  Beaker,
+  Droplets,
+  Factory,
+  FlaskConical,
+  Fuel,
+  Layers,
+  Pickaxe,
+  Pill,
+  Sprout,
+  TreePine,
+  Utensils,
+  Zap,
+} from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import { delay } from "@/lib/reveal";
+import SectionHead from "./SectionHead";
 
-const chipKeys = [
-  "ind.c1", "ind.c2", "ind.c3", "ind.c4", "ind.c5", "ind.c6",
-  "ind.c7", "ind.c8", "ind.c9", "ind.c10", "ind.c11", "ind.c12",
+const industries = [
+  { key: "c1", Icon: Fuel },
+  { key: "c2", Icon: FlaskConical },
+  { key: "c3", Icon: Beaker },
+  { key: "c4", Icon: Pickaxe },
+  { key: "c5", Icon: Factory },
+  { key: "c6", Icon: Zap },
+  { key: "c7", Icon: Sprout },
+  { key: "c8", Icon: TreePine },
+  { key: "c9", Icon: Utensils },
+  { key: "c10", Icon: Pill },
+  { key: "c11", Icon: Layers },
+  { key: "c12", Icon: Droplets },
 ];
 
 export default function Industries() {
   const { t } = useI18n();
 
   return (
-    <section className="py-22 px-4" id="setores">
-      <div className="max-w-[1120px] mx-auto">
-        <p className="sec-label">{t("ind.label")}</p>
-        <h2 className="sec-title">{t("ind.title")}</h2>
-        <p className="sec-intro">{t("ind.intro")}</p>
+    <section className="sec sec-alt" id="setores">
+      <div className="container">
+        <SectionHead label={t("ind.label")} title={t("ind.title")} intro={t("ind.intro")} />
 
-        <div className="flex flex-wrap gap-2.5 mt-12">
-          {chipKeys.map((key) => (
-            <span
-              key={key}
-              className="font-[family-name:var(--font-outfit)] text-sm font-medium text-[var(--text-mid)] px-5 py-2.5 border border-[var(--line)] rounded-md transition-colors hover:border-[var(--blue)] hover:text-[var(--blue)] cursor-default"
-            >
-              {t(key)}
-            </span>
+        <div className="ind-grid">
+          {industries.map(({ key, Icon }, i) => (
+            <div className="ind-chip" key={key} data-rv style={delay(i, 50)}>
+              <Icon size={20} strokeWidth={1.75} />
+              <span>{t(`ind.${key}`)}</span>
+            </div>
           ))}
         </div>
       </div>

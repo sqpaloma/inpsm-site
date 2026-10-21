@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -17,6 +17,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.inpsm.com"),
   title: "IN Process Safety | Segurança de Processos e Gestão de Riscos",
   description:
     "Consultoria especializada em segurança de processos e gestão de riscos industriais. PSM, análise de riscos, auditorias, treinamentos e excelência operacional.",
@@ -38,7 +39,14 @@ export const metadata: Metadata = {
     siteName: "IN Process Safety",
     locale: "pt_BR",
     type: "website",
+    images: [{ url: "/hero.jpg", width: 1983, height: 793, alt: "IN Process Safety" }],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#071F40",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -48,7 +56,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${outfit.variable} ${ibmPlexSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        {/* Marks that JS is running so scroll-reveal styles only apply when they can be resolved */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.setAttribute('data-js','');",
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

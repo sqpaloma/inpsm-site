@@ -81,6 +81,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "train.m2t": "Treinamentos programados com vagas individuais, ideais para profissionais de diferentes empresas.",
     "train.m3": "Mentoria Técnica",
     "train.m3t": "Acompanhamento individualizado para desenvolvimento de competências específicas em segurança de processos.",
+    "train.cta": "Solicitar proposta de treinamento",
 
     // Industries
     "ind.label": "Setores",
@@ -122,7 +123,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "ct.f_msg": "Mensagem",
     "ct.f_msg_ph": "Descreva brevemente sua necessidade...",
     "ct.send": "Enviar mensagem",
-    "ct.sent": "Enviado ✓",
+    "ct.sent": "Mensagem enviada ✓",
+    "ct.note": "Respondemos em até 1 dia útil.",
 
     // Footer
     "ftr.desc": "Consultoria especializada em segurança de processos industriais. Protegendo vidas, ativos e meio ambiente.",
@@ -131,7 +133,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "ftr.s2": "Análises de Riscos",
     "ftr.s3": "Investigação",
     "ftr.s4": "Auditorias",
-    "ftr.copy": "© 2025 IN Process Safety. Todos os direitos reservados.",
+    "ftr.rights": "Todos os direitos reservados.",
   },
   en: {
     // Nav
@@ -213,6 +215,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     "train.m2t": "Scheduled training with individual enrollment, ideal for professionals from different companies.",
     "train.m3": "Technical Mentoring",
     "train.m3t": "Individualized guidance for developing specific competencies in process safety.",
+    "train.cta": "Request a training proposal",
 
     // Industries
     "ind.label": "Industries",
@@ -254,7 +257,8 @@ export const translations: Record<Lang, Record<string, string>> = {
     "ct.f_msg": "Message",
     "ct.f_msg_ph": "Briefly describe your needs...",
     "ct.send": "Send message",
-    "ct.sent": "Sent ✓",
+    "ct.sent": "Message sent ✓",
+    "ct.note": "We reply within one business day.",
 
     // Footer
     "ftr.desc": "Specialized consulting in industrial process safety. Protecting lives, assets, and the environment.",
@@ -263,6 +267,6 @@ export const translations: Record<Lang, Record<string, string>> = {
     "ftr.s2": "Risk Analysis",
     "ftr.s3": "Investigation",
     "ftr.s4": "Audits",
-    "ftr.copy": "© 2025 IN Process Safety. All rights reserved.",
+    "ftr.rights": "All rights reserved.",
   },
 };
