@@ -421,6 +421,8 @@ button { font: inherit; }
   font-weight: 500;
   line-height: 1.6;
   color: var(--inst);
+  text-align: justify;
+  hyphens: auto; -webkit-hyphens: auto;
 }
 .about-lead::before {
   content: "";
@@ -430,7 +432,7 @@ button { font: inherit; }
   border-radius: 2px;
   background: var(--green);
 }
-.about-text { font-size: 1.04rem; color: var(--text-mid); line-height: 1.82; }
+.about-text { font-size: 1.04rem; color: var(--text-mid); line-height: 1.82; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .about-text p + p { margin-top: 1.3rem; }
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -472,7 +474,7 @@ button { font: inherit; }
   margin-bottom: 1.5rem;
 }
 .mvp h3 { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 0.7rem; }
-.mvp p { font-size: 0.96rem; color: var(--text-inv-mid); line-height: 1.72; }
+.mvp p { font-size: 0.96rem; color: var(--text-inv-mid); line-height: 1.72; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .mvp p + p { margin-top: 0.85rem; }
 .mvp p.mvp-lead { color: #fff; font-weight: 500; }
 
@@ -483,7 +485,7 @@ button { font: inherit; }
 }
 .vals-head { margin-bottom: 2.25rem; max-width: 70ch; }
 .vals-head h3 { font-size: 1.35rem; font-weight: 600; color: #fff; }
-.vals-head p { margin-top: 0.75rem; font-size: 0.98rem; color: var(--text-inv-mid); line-height: 1.7; }
+.vals-head p { margin-top: 0.75rem; font-size: 0.98rem; color: var(--text-inv-mid); line-height: 1.7; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .vals-row {
   list-style: none;
   margin: 0;
@@ -546,7 +548,7 @@ button { font: inherit; }
 .svc-n { font-size: 0.82rem; font-weight: 600; color: var(--blue); letter-spacing: 0.04em; }
 .svc-card:hover .svc-ico { transform: scale(1.06); }
 .svc-card h3 { font-size: 1.18rem; font-weight: 600; color: var(--inst); line-height: 1.3; margin-bottom: 0.75rem; }
-.svc-desc { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; }
+.svc-desc { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 .svc-list {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
