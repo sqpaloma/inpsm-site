@@ -129,10 +129,8 @@ button { font: inherit; }
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: box-shadow 0.35s, background 0.35s, transform 0.45s var(--ease);
+  transition: box-shadow 0.35s, background 0.35s;
 }
-.hdr.hidden { transform: translateY(calc(-100% - 100px)); }
-.hdr.hidden:focus-within { transform: none; }
 .hdr.scrolled {
   background: rgba(7, 31, 64, 0.97);
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);

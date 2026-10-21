@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useContent } from "@/lib/i18n";
 import Logo from "./Logo";
@@ -32,9 +32,7 @@ function LangSwitch({ className = "" }: { className?: string }) {
 export default function Header() {
   const c = useContent();
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
-  const lastY = useRef(0);
 
   const links = [
     ["#sobre", c.nav.about],
@@ -45,13 +43,7 @@ export default function Header() {
   ] as const;
 
   useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 24);
-      // The full logo cannot shrink below 120px, so the header slides away while scrolling down.
-      setHidden(y > 320 && y > lastY.current);
-      lastY.current = y;
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -73,7 +65,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`hdr${scrolled ? " scrolled" : ""}${hidden && !open ? " hidden" : ""}`}
+        className={`hdr${scrolled ? " scrolled" : ""}`}
         id="topo"
       >
         <div className="container hdr-in">
