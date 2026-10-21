@@ -27,9 +27,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     } catch {}
   }, []);
 
+  useEffect(() => {
+    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+  }, [lang]);
+
   const setLang = useCallback((newLang: Lang) => {
     setLangState(newLang);
-    document.documentElement.lang = newLang === "pt" ? "pt-BR" : "en";
     try {
       localStorage.setItem("inps-lang", newLang);
     } catch {}

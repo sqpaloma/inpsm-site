@@ -448,7 +448,7 @@ button { font: inherit; }
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.75rem; }
 }
-@media (max-width: 420px) {
+@media (max-width: 340px) {
   .stats { grid-template-columns: 1fr; }
 }
 
