@@ -38,7 +38,7 @@
   --gutter: clamp(1.25rem, 5vw, 4rem);
   --radius: 12px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --header-h: 76px;
+  --header-h: 156px;
 
   color-scheme: light;
 }
@@ -142,12 +142,15 @@ button { font: inherit; }
   gap: 2rem;
   height: var(--header-h);
 }
-/* Full signature on a white field hanging from the bar: the brand book sets a
-   120px minimum width and a clear space equal to the green square (≈12px at 120px). */
+/* Full signature on a white field inside the bar. The brand book sets a 120px
+   minimum width and a clear space equal to the green square (≈12px at 120px).
+   The bar is as tall as the logo so the signature is not cut by the header edge. */
 .brand {
-  align-self: flex-start;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
-  padding: 12px;
+  padding: 12px 14px;
   background: #fff;
   border-radius: 0 0 12px 12px;
   box-shadow: 0 14px 34px rgba(7, 31, 64, 0.22);
