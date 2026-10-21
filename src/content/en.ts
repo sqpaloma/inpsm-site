@@ -304,7 +304,7 @@ export const en: Content = {
     infoTitle: "IN Process Safety",
     whatsappDisplay: `+55 ${SITE.whatsappDisplay}`,
     addressLabel: "Address",
-    address: `${SITE.address.replace(/\.$/, "")}, Brazil.`,
+    address: "Salvador, Bahia, Brazil",
     cnpjLabel: "CNPJ (Brazilian company ID)",
     form: {
       title: "Send us a message",

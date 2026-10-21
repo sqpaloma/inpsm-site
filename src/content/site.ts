@@ -8,7 +8,7 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/company/inprocesssafety",
   linkedinDisplay: "linkedin.com/company/inprocesssafety",
   cnpj: "67.824.830/0001-04",
-  address:
-    "Rua Soldado Luiz Gonzaga das Virgens, nº 138, Edif. São Conrado Offices, sala 803, Caminho das Árvores, Salvador/BA, CEP 41.820-560.",
+  // Endereço público do site. O logradouro do docx é dado de contrato e não entra aqui.
+  address: "Salvador, Bahia, Brasil",
   slogan: "Optimized process | Safe Operations",
 } as const;
