@@ -132,6 +132,7 @@ button { font: inherit; }
   transition: box-shadow 0.35s, background 0.35s, transform 0.45s var(--ease);
 }
 .hdr.hidden { transform: translateY(calc(-100% - 100px)); }
+.hdr.hidden:focus-within { transform: none; }
 .hdr.scrolled {
   background: rgba(7, 31, 64, 0.97);
   box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
@@ -398,6 +399,8 @@ button { font: inherit; }
   padding-bottom: 0.3rem;
 }
 .sec-dark .sec-intro { color: var(--text-inv-mid); }
+.sec-head-solo { grid-template-columns: minmax(0, 1fr); }
+.sec-head-solo .sec-title { max-width: 26ch; }
 .sec-head-label { display: block; margin-bottom: clamp(2rem, 3.5vw, 2.75rem); }
 .sec-head-label .sec-label { margin-bottom: 0; }
 @media (max-width: 900px) {
@@ -896,7 +899,7 @@ button { font: inherit; }
 }
 .ftr-logo { display: inline-block; padding: 12px; margin: -12px 0 0.5rem -12px; }
 .ftr-logo .logo { width: 140px; height: auto; }
-.ftr-slogan { font-size: 0.88rem; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.7); }
+.ftr-slogan { white-space: nowrap; font-size: 0.88rem; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.7); }
 .ftr-addr { font-size: 0.84rem; line-height: 1.6; margin-top: 0.6rem; color: rgba(255, 255, 255, 0.5); }
 .ftr-col h5 {
   font-family: var(--fd);

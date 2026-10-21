@@ -12,7 +12,7 @@ export default function SectionHead({
   intro?: string;
 }) {
   return (
-    <div className={`sec-head${title ? "" : " sec-head-label"}`}>
+    <div className={`sec-head${title ? "" : " sec-head-label"}${intro ? "" : " sec-head-solo"}`}>
       <div data-rv>
         <p className="sec-label">{label}</p>
         {title ? <h2 className="sec-title">{title}</h2> : null}
