@@ -1,42 +1,79 @@
 "use client";
 
-import { ClipboardCheck, Cog, GitBranch, RefreshCw, ScanSearch, ShieldCheck } from "lucide-react";
-import { useI18n } from "@/lib/i18n";
+import {
+  ArrowDown,
+  ClipboardCheck,
+  DraftingCompass,
+  Gauge,
+  GraduationCap,
+  Layers,
+  ScanSearch,
+  type LucideIcon,
+} from "lucide-react";
+import { useContent } from "@/lib/i18n";
 import { delay } from "@/lib/reveal";
 import SectionHead from "./SectionHead";
 
-const services = [
-  { key: "s1", Icon: ShieldCheck, tags: { pt: ["PSM", "RBPS", "OSHA", "Seveso III", "ISO 45001"], en: ["PSM", "RBPS", "OSHA", "Seveso III", "ISO 45001"] } },
-  { key: "s2", Icon: ScanSearch, tags: { pt: ["HAZOP", "HAZID", "LOPA", "Bowtie", "What-If", "APP"], en: ["HAZOP", "HAZID", "LOPA", "Bowtie", "What-If", "PHA"] } },
-  { key: "s3", Icon: GitBranch, tags: { pt: ["Tripod Beta", "Árvore de Causas", "5 Porquês", "AcciMap"], en: ["Tripod Beta", "Causal Tree", "5 Whys", "AcciMap"] } },
-  { key: "s4", Icon: ClipboardCheck, tags: { pt: ["Gap Analysis", "Compliance", "Benchmarking"], en: ["Gap Analysis", "Compliance", "Benchmarking"] } },
-  { key: "s5", Icon: Cog, tags: { pt: ["RBI", "FMEA", "SIL/SIS", "NR-13"], en: ["RBI", "FMEA", "SIL/SIS", "NR-13"] } },
-  { key: "s6", Icon: RefreshCw, tags: { pt: ["MOC", "PSSR", "Startup/Shutdown"], en: ["MOC", "PSSR", "Startup/Shutdown"] } },
-];
+const icons: Record<string, LucideIcon> = {
+  psm: Layers,
+  riscos: ScanSearch,
+  projetos: DraftingCompass,
+  auditorias: ClipboardCheck,
+  treinamentos: GraduationCap,
+  excelencia: Gauge,
+};
 
 export default function Services() {
-  const { t, lang } = useI18n();
+  const c = useContent();
 
   return (
     <section className="sec" id="solucoes">
       <div className="container">
-        <SectionHead label={t("svc.label")} title={t("svc.title")} intro={t("svc.intro")} />
+        <SectionHead label={c.solutions.label} title={c.solutions.title} />
 
         <div className="svc-grid">
-          {services.map(({ key, Icon, tags }, i) => (
-            <article className="svc-card" key={key} data-rv style={delay(i)}>
-              <div className="svc-ico">
-                <Icon size={22} strokeWidth={1.75} />
-              </div>
-              <h3>{t(`svc.${key}`)}</h3>
-              <p className="svc-desc">{t(`svc.${key}t`)}</p>
-              <div className="svc-tags">
-                {tags[lang].map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-            </article>
-          ))}
+          {c.solutions.areas.map((area, i) => {
+            const Icon = icons[area.id] ?? Layers;
+            return (
+              <article className="svc-card" key={area.id} id={`solucao-${area.id}`} data-rv style={delay(i % 2)}>
+                <div className="svc-top">
+                  <div className="svc-ico">
+                    <Icon size={22} strokeWidth={1.75} />
+                  </div>
+                  <span className="svc-n">{String(i + 1).padStart(2, "0")}</span>
+                </div>
+                <h3>{area.title}</h3>
+                <p className="svc-desc">{area.description}</p>
+
+                {area.services ? (
+                  <div className="svc-list">
+                    <h4>{c.solutions.servicesLabel}</h4>
+                    <ol>
+                      {area.services.map((s) => (
+                        <li key={s.title}>
+                          {s.text ? (
+                            <>
+                              <strong>{s.title}</strong>
+                              <span>{s.text}</span>
+                            </>
+                          ) : (
+                            s.title
+                          )}
+                        </li>
+                      ))}
+                    </ol>
+                  </div>
+                ) : null}
+
+                {area.link ? (
+                  <a className="svc-link" href={area.link.href}>
+                    {area.link.label}
+                    <ArrowDown size={15} strokeWidth={2.2} />
+                  </a>
+                ) : null}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
