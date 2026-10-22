@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useContent } from "@/lib/i18n";
-import Logo from "./Logo";
 
 const langs = [
   { lang: "pt", href: "/", label: "PT" },
@@ -70,7 +69,8 @@ export default function Header() {
       >
         <div className="container hdr-in">
           <a href="#topo" className="brand" aria-label={c.a11y.home}>
-            <Logo />
+            <img src="/logo-mark.svg" alt="" width={40} height={40} />
+            <span className="brand-name">Process Safety</span>
           </a>
 
           <nav className="nav" aria-label={c.a11y.mainNav}>
