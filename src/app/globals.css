@@ -150,6 +150,13 @@ button { font: inherit; }
   flex-shrink: 0;
 }
 .brand img { width: 40px; height: 40px; }
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.12rem;
+  min-width: 0;
+}
 .brand-name {
   font-family: var(--fd);
   font-weight: 500;
@@ -159,6 +166,19 @@ button { font: inherit; }
   color: rgba(255, 255, 255, 0.92);
   white-space: nowrap;
 }
+.brand-slogan {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--fd);
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.52);
+  white-space: nowrap;
+}
+.brand-slogan .sep { color: var(--green); }
 .nav {
   display: flex;
   align-items: center;
@@ -334,18 +354,6 @@ button { font: inherit; }
   margin-top: 2.6rem;
   flex-wrap: wrap;
 }
-.hero-tag {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 3.75rem;
-  font-family: var(--fd);
-  font-size: 0.86rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.72);
-}
-.hero-tag .sep { color: var(--green); }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-bg { animation: kenburns 16s ease-out both; }
