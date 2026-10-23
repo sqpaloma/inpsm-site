@@ -29,7 +29,7 @@ export default function Services() {
   return (
     <section className="sec" id="solucoes">
       <div className="container">
-        <SectionHead label={c.solutions.label} title={c.solutions.title} />
+        <SectionHead title={c.solutions.title} />
 
         <div className="svc-grid">
           {c.solutions.areas.map((area, i) => {
