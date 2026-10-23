@@ -38,7 +38,6 @@ export default function Header() {
     ["#solucoes", c.nav.solutions],
     ["#treinamentos", c.nav.training],
     ["#setores", c.nav.industries],
-    ["#conteudos", c.nav.media],
   ] as const;
 
   useEffect(() => {

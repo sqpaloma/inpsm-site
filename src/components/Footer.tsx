@@ -27,7 +27,6 @@ export default function Footer() {
             <a href="#solucoes">{c.nav.solutions}</a>
             <a href="#treinamentos">{c.nav.training}</a>
             <a href="#setores">{c.nav.industries}</a>
-            <a href="#conteudos">{c.nav.media}</a>
           </div>
 
           <div className="ftr-col">
