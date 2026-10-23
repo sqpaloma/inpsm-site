@@ -11,7 +11,7 @@ export default function About() {
   return (
     <section className="sec" id="sobre">
       <div className="container">
-        <SectionHead label={c.about.label} title={c.about.title} />
+        <SectionHead title={c.about.title} />
 
         <div className="about-grid">
           <p className="about-lead" data-rv>
