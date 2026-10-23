@@ -3,7 +3,6 @@
 import { Compass, Eye, Target } from "lucide-react";
 import { useContent } from "@/lib/i18n";
 import { delay } from "@/lib/reveal";
-import SectionHead from "./SectionHead";
 
 export default function Identity() {
   const c = useContent();
@@ -17,8 +16,6 @@ export default function Identity() {
   return (
     <section className="sec sec-dark" id="identidade">
       <div className="container">
-        <SectionHead label={c.identity.label} />
-
         <div className="mvp-row">
           {pillars.map(({ item, Icon }, i) => (
             <div className="mvp" key={item.title} data-rv style={delay(i)}>
