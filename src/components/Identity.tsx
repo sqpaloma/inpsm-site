@@ -40,10 +40,8 @@ export default function Identity() {
           <ol className="vals-row">
             {c.identity.values.map((v, i) => (
               <li className="val" key={v.title} data-rv style={delay(i)}>
-                <h4>
-                  <span className="val-n">{String(i + 1).padStart(2, "0")}</span>
-                  {v.title}
-                </h4>
+                <span className="val-n" aria-hidden="true">{i + 1}</span>
+                <h4>{v.title}</h4>
                 <p>{v.text}</p>
               </li>
             ))}

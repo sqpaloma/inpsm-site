@@ -74,19 +74,19 @@ export const pt: Content = {
     values: [
       {
         title: "Foco no Cliente",
-        text: "Compreender as necessidades, os desafios e as particularidades de cada cliente, oferecendo soluções personalizadas que agreguem valor, fortaleçam a Segurança de Processos e contribuam para resultados sustentáveis.",
+        text: "Compreender as necessidades e particularidades de cada cliente, oferecendo soluções personalizadas que agreguem valor e fortaleçam a Segurança de Processos.",
       },
       {
         title: "Atitude de Dono",
-        text: "Atuar com responsabilidade, comprometimento, proatividade e senso de pertencimento, tratando os desafios dos clientes com a dedicação e o cuidado necessários para alcançar resultados consistentes.",
+        text: "Atuar com responsabilidade, proatividade e senso de pertencimento, tratando os desafios dos clientes com a dedicação necessária para resultados consistentes.",
       },
       {
         title: "Compromisso com a Gestão de Riscos",
-        text: "Colocar a proteção das pessoas, do meio ambiente, dos ativos e da reputação das organizações no centro das decisões, promovendo o gerenciamento responsável dos riscos e a prevenção de acidentes industriais.",
+        text: "Colocar a proteção das pessoas, do meio ambiente, dos ativos e da reputação no centro das decisões, promovendo o gerenciamento responsável dos riscos.",
       },
       {
         title: "Excelência Técnica e Melhoria Contínua",
-        text: "Aplicar conhecimento, experiência e metodologias reconhecidas para desenvolver soluções eficazes, estimular a inovação e promover a evolução contínua da Segurança de Processos, da gestão de riscos e do desempenho operacional, contribuindo para a continuidade dos negócios.",
+        text: "Aplicar conhecimento e metodologias reconhecidas para desenvolver soluções eficazes e promover a evolução contínua da Segurança de Processos e da gestão de riscos.",
       },
     ],
   },

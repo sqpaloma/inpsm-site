@@ -73,19 +73,19 @@ export const en: Content = {
     values: [
       {
         title: "Client Focus",
-        text: "Understanding the needs, challenges and particularities of each client, offering customized solutions that add value, strengthen Process Safety and contribute to sustainable results.",
+        text: "Understanding the needs and particularities of each client, offering customized solutions that add value and strengthen Process Safety.",
       },
       {
         title: "Ownership Mindset",
-        text: "Acting with responsibility, commitment, proactivity and a sense of belonging, treating clients' challenges with the dedication and care needed to achieve consistent results.",
+        text: "Acting with responsibility, proactivity and a sense of belonging, treating clients' challenges with the dedication needed for consistent results.",
       },
       {
         title: "Commitment to Risk Management",
-        text: "Placing the protection of people, the environment, assets and the reputation of organizations at the center of decisions, promoting responsible risk management and the prevention of industrial accidents.",
+        text: "Placing the protection of people, the environment, assets and reputation at the center of decisions, promoting responsible risk management.",
       },
       {
         title: "Technical Excellence and Continuous Improvement",
-        text: "Applying knowledge, experience and recognized methodologies to develop effective solutions, encourage innovation and promote the continuous evolution of Process Safety, risk management and operational performance, contributing to business continuity.",
+        text: "Applying knowledge and recognized methodologies to develop effective solutions and promote the continuous evolution of Process Safety and risk management.",
       },
     ],
   },
