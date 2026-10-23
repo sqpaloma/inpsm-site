@@ -94,6 +94,8 @@ export const pt: Content = {
     label: "Soluções",
     title: "Nossas Soluções",
     servicesLabel: "Serviços oferecidos",
+    more: "Ver mais",
+    less: "Ver menos",
     areas: [
       {
         id: "psm",

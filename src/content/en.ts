@@ -93,6 +93,8 @@ export const en: Content = {
     label: "Solutions",
     title: "Our Solutions",
     servicesLabel: "Services offered",
+    more: "See more",
+    less: "See less",
     areas: [
       {
         id: "psm",

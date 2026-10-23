@@ -537,6 +537,10 @@ button { font: inherit; }
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  align-items: start;
+}
+.svc-grid[data-cols="3"] {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .svc-card {
   position: relative;
@@ -567,6 +571,29 @@ button { font: inherit; }
 .svc-card:hover .svc-ico { transform: scale(1.06); }
 .svc-card h3 { font-size: 1.18rem; font-weight: 600; color: var(--inst); line-height: 1.3; margin-bottom: 0.75rem; }
 .svc-desc { font-size: 0.95rem; color: var(--text-mid); line-height: 1.7; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+.svc-desc.is-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.svc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.15rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--fd);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--blue);
+  cursor: pointer;
+}
+.svc-toggle svg { transition: transform 0.3s var(--ease); }
+.svc-card.is-open .svc-toggle svg { transform: rotate(180deg); }
+.svc-toggle:hover { color: var(--inst); }
 .svc-list {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
@@ -614,8 +641,13 @@ button { font: inherit; }
   color: var(--blue);
 }
 .svc-link:hover { color: var(--inst); }
+@media (max-width: 1100px) {
+  .svc-grid[data-cols="3"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 900px) {
-  .svc-grid { grid-template-columns: 1fr; }
+  .svc-grid,
+  .svc-grid[data-cols="2"],
+  .svc-grid[data-cols="3"] { grid-template-columns: 1fr; }
 }
 
 /* ═══════════════ TRAINING ═══════════════ */

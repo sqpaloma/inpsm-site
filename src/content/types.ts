@@ -65,6 +65,8 @@ export interface Content {
     label: string;
     title: string;
     servicesLabel: string;
+    more: string;
+    less: string;
     areas: SolutionArea[];
   };
   training: {
