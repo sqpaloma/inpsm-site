@@ -871,6 +871,13 @@ button { font: inherit; }
   align-items: start;
 }
 .c-info h3 { font-size: 1.25rem; font-weight: 600; color: #fff; margin-bottom: 1.25rem; }
+.c-wa { width: 100%; margin-bottom: 0.75rem; }
+.c-wa-note {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-inv-mid);
+  margin-bottom: 1.5rem;
+}
 .c-row {
   display: flex;
   gap: 1rem;

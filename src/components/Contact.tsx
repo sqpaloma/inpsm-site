@@ -42,12 +42,23 @@ export default function Contact() {
           <div className="c-info" data-rv>
             <h3>{c.contact.infoTitle}</h3>
 
+            <a
+              className="btn btn-g c-wa"
+              href={SITE.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <MessageCircle size={18} strokeWidth={2} />
+              {c.contact.whatsappCta}
+            </a>
+            <p className="c-wa-note">{c.contact.noWhatsapp}</p>
+
             <div className="c-row">
               <div className="c-row-ico"><MessageCircle size={19} strokeWidth={1.75} /></div>
               <div>
                 <div className="c-row-lbl">WhatsApp</div>
                 <div className="c-row-val">
-                  <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer">
+                  <a href={SITE.whatsappHref} target="_blank" rel="noopener noreferrer">
                     {c.contact.whatsappDisplay}
                   </a>
                 </div>

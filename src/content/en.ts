@@ -305,6 +305,8 @@ export const en: Content = {
     title: "Contact us",
     infoTitle: "IN Process Safety",
     whatsappDisplay: `+55 ${SITE.whatsappDisplay}`,
+    whatsappCta: "Chat on WhatsApp",
+    noWhatsapp: "Don't use WhatsApp? Send a message with the form instead.",
     addressLabel: "Address",
     address: "Salvador, Bahia, Brazil",
     cnpjLabel: "CNPJ (Brazilian company ID)",

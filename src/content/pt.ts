@@ -306,6 +306,8 @@ export const pt: Content = {
     title: "Fale conosco",
     infoTitle: "IN Process Safety",
     whatsappDisplay: SITE.whatsappDisplay,
+    whatsappCta: "Falar no WhatsApp",
+    noWhatsapp: "Não usa WhatsApp? Envie sua mensagem pelo formulário ao lado.",
     addressLabel: "Endereço",
     address: SITE.address,
     cnpjLabel: "CNPJ",

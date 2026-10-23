@@ -38,7 +38,7 @@ export default function Footer() {
 
           <div className="ftr-col">
             <h5>{c.contact.label}</h5>
-            <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer">
+            <a href={SITE.whatsappHref} target="_blank" rel="noopener noreferrer">
               WhatsApp {c.contact.whatsappDisplay}
             </a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
