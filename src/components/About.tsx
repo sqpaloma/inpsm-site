@@ -13,15 +13,15 @@ export default function About() {
       <div className="container">
         <SectionHead title={c.about.title} />
 
-        <div className="about-grid">
+        <div className="about-stack">
           <p className="about-lead" data-rv>
             {lead}
           </p>
-          <div className="about-text" data-rv style={delay(1, 140)}>
-            {rest.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
+          {rest.map((p, i) => (
+            <p className="about-text" key={p} data-rv style={delay(i + 1, 140)}>
+              {p}
+            </p>
+          ))}
         </div>
       </div>
     </section>
