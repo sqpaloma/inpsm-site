@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useContent } from "@/lib/i18n";
+import { SITE } from "@/content/site";
 
 export default function Hero() {
   const c = useContent();
@@ -27,7 +28,12 @@ export default function Hero() {
           <h1>{c.hero.title}</h1>
           <p className="hero-sub">{c.hero.sub}</p>
           <div className="hero-btns">
-            <a href="#contato" className="btn btn-g">
+            <a
+              href={SITE.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-g"
+            >
               {c.hero.ctaPrimary}
               <ArrowRight size={16} strokeWidth={2.2} />
             </a>

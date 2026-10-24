@@ -2,6 +2,7 @@
 
 import { ArrowRight, Presentation, UserCheck, Wrench } from "lucide-react";
 import { useContent } from "@/lib/i18n";
+import { SITE } from "@/content/site";
 import { delay } from "@/lib/reveal";
 import SectionHead from "./SectionHead";
 
@@ -51,7 +52,12 @@ export default function Training() {
 
         <div className="t-closing" data-rv>
           <p>{t.closing}</p>
-          <a href="#contato" className="btn btn-g btn-sm">
+          <a
+            href={SITE.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-g btn-sm"
+          >
             {t.cta}
             <ArrowRight size={15} strokeWidth={2.2} />
           </a>

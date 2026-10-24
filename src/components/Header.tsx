@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { useContent } from "@/lib/i18n";
+import { SITE } from "@/content/site";
 
 const langs = [
   { lang: "pt", href: "/", label: "PT" },
@@ -88,7 +89,12 @@ export default function Header() {
               </a>
             ))}
             <LangSwitch />
-            <a href="#contato" className="btn btn-g btn-sm">
+            <a
+              href={SITE.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-g btn-sm"
+            >
               {c.nav.contact}
               <ArrowRight size={15} strokeWidth={2.2} />
             </a>
@@ -126,7 +132,13 @@ export default function Header() {
           </a>
         ))}
         <LangSwitch className="m-lang" />
-        <a href="#contato" className="btn btn-g" onClick={() => setOpen(false)}>
+        <a
+          href={SITE.whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-g"
+          onClick={() => setOpen(false)}
+        >
           {c.nav.contact}
           <ArrowRight size={16} strokeWidth={2.2} />
         </a>
