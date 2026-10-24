@@ -11,17 +11,17 @@ export default function About() {
   return (
     <section className="sec" id="sobre">
       <div className="container">
-        <SectionHead label={c.about.label} title={c.about.title} />
+        <SectionHead title={c.about.title} />
 
-        <div className="about-grid">
+        <div className="about-stack">
           <p className="about-lead" data-rv>
             {lead}
           </p>
-          <div className="about-text" data-rv style={delay(1, 140)}>
-            {rest.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
+          {rest.map((p, i) => (
+            <p className="about-text" key={p} data-rv style={delay(i + 1, 140)}>
+              {p}
+            </p>
+          ))}
         </div>
       </div>
     </section>

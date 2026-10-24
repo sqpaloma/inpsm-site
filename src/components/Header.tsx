@@ -38,7 +38,6 @@ export default function Header() {
     ["#solucoes", c.nav.solutions],
     ["#treinamentos", c.nav.training],
     ["#setores", c.nav.industries],
-    ["#conteudos", c.nav.media],
   ] as const;
 
   useEffect(() => {
@@ -70,7 +69,16 @@ export default function Header() {
         <div className="container hdr-in">
           <a href="#topo" className="brand" aria-label={c.a11y.home}>
             <img src="/logo-mark.svg" alt="" width={40} height={40} />
-            <span className="brand-name">Process Safety</span>
+            <span className="brand-text">
+              <span className="brand-name">Process Safety</span>
+              <span className="brand-slogan">
+                <span>{c.hero.slogan[0]}</span>
+                <span className="sep" aria-hidden="true">
+                  |
+                </span>
+                <span>{c.hero.slogan[1]}</span>
+              </span>
+            </span>
           </a>
 
           <nav className="nav" aria-label={c.a11y.mainNav}>

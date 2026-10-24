@@ -65,6 +65,8 @@ export interface Content {
     label: string;
     title: string;
     servicesLabel: string;
+    more: string;
+    less: string;
     areas: SolutionArea[];
   };
   training: {
@@ -92,6 +94,8 @@ export interface Content {
     title: string;
     infoTitle: string;
     whatsappDisplay: string;
+    whatsappCta: string;
+    noWhatsapp: string;
     addressLabel: string;
     address: string;
     cnpjLabel: string;

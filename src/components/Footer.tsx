@@ -27,7 +27,6 @@ export default function Footer() {
             <a href="#solucoes">{c.nav.solutions}</a>
             <a href="#treinamentos">{c.nav.training}</a>
             <a href="#setores">{c.nav.industries}</a>
-            <a href="#conteudos">{c.nav.media}</a>
           </div>
 
           <div className="ftr-col">
@@ -39,7 +38,7 @@ export default function Footer() {
 
           <div className="ftr-col">
             <h5>{c.contact.label}</h5>
-            <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer">
+            <a href={SITE.whatsappHref} target="_blank" rel="noopener noreferrer">
               WhatsApp {c.contact.whatsappDisplay}
             </a>
             <a href={`mailto:${SITE.email}`}>{SITE.email}</a>

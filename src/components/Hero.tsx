@@ -35,11 +35,6 @@ export default function Hero() {
               {c.hero.ctaSecondary}
             </a>
           </div>
-          <p className="hero-tag">
-            <span>{c.hero.slogan[0]}</span>
-            <span className="sep" aria-hidden="true">|</span>
-            <span>{c.hero.slogan[1]}</span>
-          </p>
         </div>
       </div>
     </section>

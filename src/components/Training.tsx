@@ -14,7 +14,7 @@ export default function Training() {
   return (
     <section className="sec sec-dark" id="treinamentos">
       <div className="container">
-        <SectionHead label={t.label} title={t.title} />
+        <SectionHead title={t.title} />
 
         <h3 className="t-sub" data-rv>{t.modesTitle}</h3>
         <ol className="t-modes">

@@ -10,7 +10,6 @@ import Identity from "./Identity";
 import Services from "./Services";
 import Training from "./Training";
 import Industries from "./Industries";
-import Media from "./Media";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
@@ -26,7 +25,6 @@ export default function Site({ lang }: { lang: Lang }) {
           <Services />
           <Training />
           <Industries />
-          <Media />
           <Contact />
         </main>
         <Footer />
