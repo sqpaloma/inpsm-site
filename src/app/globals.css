@@ -517,10 +517,15 @@ button { font: inherit; }
   margin: 0.45rem 0 0.65rem;
 }
 .val-n {
-  font-size: 0.92rem;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--green);
+  font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--green);
+  color: var(--navy);
   line-height: 1;
 }
 .val p { font-size: 0.9rem; color: var(--text-inv-mid); line-height: 1.65; flex: 1; }
@@ -576,6 +581,10 @@ button { font: inherit; }
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+@media (min-width: 901px) {
+  .svc-card h3 { min-height: 2.6em; }
+  .svc-desc.is-clamp { min-height: 6.8em; }
 }
 .svc-toggle {
   display: inline-flex;

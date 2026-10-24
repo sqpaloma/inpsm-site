@@ -44,7 +44,7 @@ export default function Industries() {
     <section className="sec sec-alt" id="setores">
       <div className="container">
         <div className="ind-head">
-          <SectionHead label={c.industries.label} title={c.industries.title} />
+          <SectionHead title={c.industries.title} />
           <div className="ind-ctrl" data-rv>
             <button type="button" aria-label={c.a11y.prev} onClick={() => step(-1)}>
               <ChevronLeft size={20} strokeWidth={2} />
