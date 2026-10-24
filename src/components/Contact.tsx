@@ -36,7 +36,7 @@ export default function Contact() {
   return (
     <section className="sec sec-dark" id="contato">
       <div className="container">
-        <SectionHead label={c.contact.label} title={c.contact.title} />
+        <SectionHead title={c.contact.title} />
 
         <div className="contact-grid">
           <div className="c-info" data-rv>

@@ -12,6 +12,7 @@ import Training from "./Training";
 import Industries from "./Industries";
 import Contact from "./Contact";
 import Footer from "./Footer";
+import WhatsAppFab from "./WhatsAppFab";
 
 export default function Site({ lang }: { lang: Lang }) {
   return (
@@ -28,6 +29,7 @@ export default function Site({ lang }: { lang: Lang }) {
           <Contact />
         </main>
         <Footer />
+        <WhatsAppFab />
       </RevealRoot>
     </I18nProvider>
   );

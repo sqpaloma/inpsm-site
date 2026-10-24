@@ -63,8 +63,7 @@ export const en: Content = {
       title: "Purpose",
       paragraphs: [
         "To make Process Safety a natural part of organizations' culture and decisions.",
-        "We believe that truly safe operations are built through the integration of people, processes, technology and risk management.",
-        "Our purpose is to help Process Safety stop being perceived merely as a regulatory obligation and be recognized as an essential value for business continuity, efficiency and sustainability.",
+        "We believe safe operations come from integrating people, processes, technology and risk management, and that safety should be an essential business value, not just a regulatory obligation.",
       ],
     },
     valuesTitle: "Values",

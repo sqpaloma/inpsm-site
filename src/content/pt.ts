@@ -64,8 +64,7 @@ export const pt: Content = {
       title: "Propósito",
       paragraphs: [
         "Fazer da Segurança de Processos uma parte natural da cultura e das decisões das organizações.",
-        "Acreditamos que operações verdadeiramente seguras são construídas por meio da integração entre pessoas, processos, tecnologia e gestão de riscos.",
-        "Nosso propósito é contribuir para que a Segurança de Processos deixe de ser percebida apenas como uma obrigação normativa e seja reconhecida como um valor essencial para a continuidade, a eficiência e a sustentabilidade dos negócios.",
+        "Acreditamos que operações seguras nascem da integração entre pessoas, processos, tecnologia e gestão de riscos, e que a segurança deve ser um valor essencial para os negócios, não apenas uma obrigação normativa.",
       ],
     },
     valuesTitle: "Valores",

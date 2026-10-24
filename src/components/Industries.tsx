@@ -1,11 +1,28 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useContent } from "@/lib/i18n";
 import SectionHead from "./SectionHead";
 
 const AUTOPLAY_MS = 3500;
+
+// Same order as `industries.items` in the content files.
+const IMAGES = [
+  "01-quimica",
+  "02-petroquimica",
+  "03-oleo-gas",
+  "04-biocombustiveis",
+  "05-papel-celulose",
+  "06-armazenamento",
+  "07-terminais",
+  "08-agroindustria",
+  "09-mineracao",
+  "10-alimentos-bebidas",
+  "11-farmaceutica",
+  "12-geracao-energia",
+];
 
 export default function Industries() {
   const c = useContent();
@@ -69,8 +86,20 @@ export default function Industries() {
         >
           {c.industries.items.map((name, i) => (
             <li className="ind-card" key={name} aria-roledescription="slide">
-              <span className="ind-n">{String(i + 1).padStart(2, "0")}</span>
-              <span className="ind-name">{name}</span>
+              {IMAGES[i] ? (
+                <div className="ind-img">
+                  <Image
+                    src={`/industries/${IMAGES[i]}.jpg`}
+                    alt=""
+                    fill
+                    sizes="(max-width: 480px) 78vw, (max-width: 700px) 60vw, (max-width: 1000px) 33vw, 300px"
+                  />
+                </div>
+              ) : null}
+              <div className="ind-body">
+                <span className="ind-n">{String(i + 1).padStart(2, "0")}</span>
+                <span className="ind-name">{name}</span>
+              </div>
               <span className="ind-line" aria-hidden="true" />
             </li>
           ))}
